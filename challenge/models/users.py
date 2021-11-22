@@ -2,6 +2,8 @@ from challenge.models import db
 
 
 class User(db.Model):
+    PER_PAGE = 20
+
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -12,3 +14,24 @@ class User(db.Model):
 
     def __str__(self):
         return f'<User {self.username}>'
+
+    @classmethod
+    def search(cls, page, **kwargs):
+        query = cls.query
+
+        if kwargs.get('first_name'):
+            query = query.filter(cls.first_name.ilike(
+                f'%{kwargs.get("first_name")}%'))
+
+        if kwargs.get('last_name'):
+            query = query.filter(cls.last_name.ilike(
+                f'%{kwargs.get("last_name")}%'))
+
+        if kwargs.get('username'):
+            query = query.filter(cls.username.ilike(
+                f'%{kwargs.get("username")}%'))
+
+        if kwargs.get('email'):
+            query = query.filter(cls.email.ilike(f'%{kwargs.get("email")}%'))
+
+        return query.paginate(page, cls.PER_PAGE)
