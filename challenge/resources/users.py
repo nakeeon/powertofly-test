@@ -1,3 +1,4 @@
+from challenge.common import cache
 from challenge.models.users import User
 from flask_restful import Resource, fields, marshal_with, reqparse
 
@@ -25,6 +26,7 @@ parser.add_argument('email')
 
 
 class Users(Resource):
+    @cache.cached(timeout=10 * 60, query_string=True)
     @marshal_with(resource_fields)
     def get(self):
         args = parser.parse_args()
