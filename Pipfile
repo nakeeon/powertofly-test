@@ -4,6 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+ipython = "*"
 
 [packages]
 flask = "*"
@@ -12,6 +13,7 @@ psycopg2 = "*"
 flask-restful = "*"
 flask-caching = "*"
 redis = "*"
+factory-boy = "*"
 
 [requires]
 python_version = "3.9.2"
