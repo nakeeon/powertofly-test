@@ -17,6 +17,7 @@ resource_fields = {
     'items': fields.Nested(user_fields)
 }
 
+PER_PAGE = 20
 parser = reqparse.RequestParser()
 parser.add_argument('page', type=int)
 parser.add_argument('username')
@@ -32,4 +33,4 @@ class Users(Resource):
         args = parser.parse_args()
         page = args.pop('page', 1)
 
-        return User.search(page, **args)
+        return User.search(**args).paginate(page, PER_PAGE)
