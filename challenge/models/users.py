@@ -1,4 +1,4 @@
-from challenge.app import db
+from challenge.models import db
 
 
 class User(db.Model):
