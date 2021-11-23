@@ -1,1 +1,1 @@
-web: gunicorn challenge/app:app
+web: gunicorn challenge.app:app
