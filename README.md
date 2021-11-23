@@ -20,7 +20,16 @@ GET `/api/users`
 
 GET `/api/users?page=2`
 
-### Filter users example
+### Filter users
+
+Filter fields:
+
+- username
+- fisrt_name
+- last_name
+- email
+
+Example:
 
 GET
 
@@ -28,4 +37,5 @@ GET
 /api/users?username=john`
 /api/users?username=john&first_name=anthony
 /api/users?username=john&first_name=anthony&page=5
+/api/users?username=john&first_name=anthony&last_name=greene&email=jtodd@example.org
 ```
