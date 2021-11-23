@@ -14,6 +14,7 @@ flask-restful = "*"
 flask-caching = "*"
 redis = "*"
 factory-boy = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.9.2"
